@@ -19,9 +19,9 @@ namespace BankKata.Lib
             transactions.Add(new Transaction(date, amount));   
         }
 
-        public void AddWithdrawlTransaction(string date, int amout)
+        public void AddWithdrawlTransaction(string date, int amount)
         {
-            throw new System.NotImplementedException();
+            transactions.Add(new Transaction(date, -amount));
         }
     }
 }

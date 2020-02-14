@@ -28,5 +28,16 @@ namespace BankKata.Tests
             Assert.That(transactions.Count,Is.EqualTo(1));
             Assert.That(transactions[0], Is.EqualTo(new Transaction(DATE, 100)));
         }
+
+        [Test]
+        public void should_store_withdrawl_transactions()
+        {
+            transactionsRepo.AddWithdrawlTransaction(DATE, 100);
+
+            var transactions = transactionsRepo.AllTransactions();
+
+            Assert.That(transactions.Count, Is.EqualTo(1));
+            Assert.That(transactions[0], Is.EqualTo(new Transaction(DATE, -100)));
+        }
     }
 }
