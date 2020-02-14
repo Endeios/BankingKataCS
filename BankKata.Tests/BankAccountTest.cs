@@ -1,8 +1,6 @@
 ﻿using BankKata.Lib;
-using NUnit.Framework;
-using System;
 using FakeItEasy;
-using NUnit.Framework.Internal;
+using NUnit.Framework;
 
 namespace BankKata.Tests
 {
@@ -19,24 +17,20 @@ namespace BankKata.Tests
             transactionsRepo = A.Fake<ITransactionsRepo>();
             clock = A.Fake<IBankClock>();
             account = new BankAccount(transactionsRepo, clock);
-                
         }
 
         [Test]
-        public void should_store_deposit_transactions_in_a_repo() {
-
-            
-            A.CallTo(()=>clock.GetCurrentDateAsString()).Returns(DATE);
+        public void should_store_deposit_transactions_in_a_repo()
+        {
+            A.CallTo(() => clock.GetCurrentDateAsString()).Returns(DATE);
             account.Deposit(500);
 
-            A.CallTo(()=>transactionsRepo.AddDepositTransaction(DATE, 500)).MustHaveHappened();
+            A.CallTo(() => transactionsRepo.AddDepositTransaction(DATE, 500)).MustHaveHappened();
         }
 
         [Test]
         public void should_store_withdrawl_transactions_in_a_repo()
         {
-
-
             A.CallTo(() => clock.GetCurrentDateAsString()).Returns(DATE);
             account.Withdraw(500);
 

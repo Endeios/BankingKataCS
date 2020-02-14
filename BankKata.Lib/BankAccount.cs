@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BankKata.Lib
+﻿namespace BankKata.Lib
 {
     public class BankAccount
     {
@@ -14,7 +12,8 @@ namespace BankKata.Lib
             this.clock = clock;
         }
 
-        public virtual void Deposit(int amount) {
+        public virtual void Deposit(int amount)
+        {
             transactionsRepo.AddDepositTransaction(GetCurrentDate(), amount);
         }
 
@@ -30,7 +29,7 @@ namespace BankKata.Lib
 
         public virtual void PrintStatement()
         {
-            
+
         }
     }
 }

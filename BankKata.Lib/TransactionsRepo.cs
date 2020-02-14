@@ -1,7 +1,13 @@
-﻿namespace BankKata.Lib
+﻿using System.Collections.Generic;
+
+namespace BankKata.Lib
 {
     public class TransactionsRepo : ITransactionsRepo
     {
+        public IEnumerable<Transaction> AllTransactions() {
+            throw new System.NotImplementedException();
+        }
+
         public void AddDepositTransaction(string date, int amount)
         {
             throw new System.NotImplementedException();

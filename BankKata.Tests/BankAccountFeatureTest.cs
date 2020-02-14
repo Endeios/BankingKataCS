@@ -1,7 +1,6 @@
 using BankKata.Lib;
-using NUnit.Framework;
-using System;
 using FakeItEasy;
+using NUnit.Framework;
 
 namespace BankKata.Tests
 {
@@ -21,7 +20,7 @@ namespace BankKata.Tests
         }
 
         [Test]
-        [Ignore("I am focusing on the unit tests right now")]
+        //[Ignore("I am focusing on the unit tests right now")]
         public void print_statement_should_have_all_transactions()
         {
             account.Deposit(1500);
@@ -30,7 +29,7 @@ namespace BankKata.Tests
 
             account.PrintStatement();
 
-          
+
             assertHasBeenPrinted("Date || Amount || Balance");
             assertHasBeenPrinted("22 / 01 / 2016 || 300 || 1300");
             assertHasBeenPrinted("12 / 01 / 2016 || -500 || 1000");
