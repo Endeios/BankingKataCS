@@ -16,7 +16,7 @@ namespace BankKata.Lib
 
         public void AddDepositTransaction(string date, int amount)
         {
-            
+            transactions.Add(new Transaction(date, amount));   
         }
 
         public void AddWithdrawlTransaction(string date, int amout)
