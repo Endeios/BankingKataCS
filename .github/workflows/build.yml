@@ -1,6 +1,6 @@
 name: Build Release 
 
-on: [push]
+on: [tag]
 
 jobs:
   build:
