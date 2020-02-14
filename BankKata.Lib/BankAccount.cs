@@ -25,7 +25,7 @@ namespace BankKata.Lib
 
         public virtual void Withdraw(int amount)
         {
-            
+            transactionsRepo.AddWithdrawlTransaction(GetCurrentDate(), amount);
         }
 
         public virtual void PrintStatement()
