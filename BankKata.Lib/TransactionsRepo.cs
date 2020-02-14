@@ -4,7 +4,7 @@ namespace BankKata.Lib
 {
     public class TransactionsRepo : ITransactionsRepo
     {
-        public IEnumerable<Transaction> AllTransactions() {
+        public IList<Transaction> AllTransactions() {
             throw new System.NotImplementedException();
         }
 

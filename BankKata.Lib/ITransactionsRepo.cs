@@ -6,6 +6,6 @@ namespace BankKata.Lib
     {
         void AddDepositTransaction(string date, int amount);
         void AddWithdrawlTransaction(string date, int amout);
-        IEnumerable<Transaction> AllTransactions();
+        IList<Transaction> AllTransactions();
     }
 }

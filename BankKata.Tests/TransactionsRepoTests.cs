@@ -8,6 +8,7 @@ namespace BankKata.Tests
 {
     class TransactionsRepoTests
     {
+        private const string DATE = "20/10/2010";
         private ITransactionsRepo transactionsRepo;
 
         [SetUp]
@@ -20,9 +21,12 @@ namespace BankKata.Tests
         [Test]
         public void should_store_deposit_transactions() 
         {
-            transactionsRepo.AddDepositTransaction("20/10/2010", 100);
+            transactionsRepo.AddDepositTransaction(DATE, 100);
 
             var transactions = transactionsRepo.AllTransactions();
+
+            Assert.That(transactions[0] == new Transaction(DATE, 100));
+            Assert.That(transactions.Count == 1);
         }
     }
 }
