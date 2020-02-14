@@ -6,5 +6,10 @@
         {
             throw new System.NotImplementedException();
         }
+
+        public void AddWithdrawlTransaction(string date, int amout)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

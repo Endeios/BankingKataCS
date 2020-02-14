@@ -23,13 +23,24 @@ namespace BankKata.Tests
         }
 
         [Test]
-        public void should_store_transactions_in_a_repo() {
+        public void should_store_deposit_transactions_in_a_repo() {
 
             
             A.CallTo(()=>clock.GetCurrentDateAsString()).Returns(DATE);
             account.Deposit(500);
 
             A.CallTo(()=>transactionsRepo.AddDepositTransaction(DATE, 500)).MustHaveHappened();
+        }
+
+        [Test]
+        public void should_store_withdrawl_transactions_in_a_repo()
+        {
+
+
+            A.CallTo(() => clock.GetCurrentDateAsString()).Returns(DATE);
+            account.Withdraw(500);
+
+            A.CallTo(() => transactionsRepo.AddWithdrawlTransaction(DATE, 500)).MustHaveHappened();
         }
     }
 }
