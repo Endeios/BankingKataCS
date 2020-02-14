@@ -2,7 +2,7 @@
 {
     public class TransactionsRepo : ITransactionsRepo
     {
-        public void addDepositTransaction(string date, int amount)
+        public void AddDepositTransaction(string date, int amount)
         {
             throw new System.NotImplementedException();
         }

@@ -2,6 +2,6 @@
 {
     public interface ITransactionsRepo
     {
-        void addDepositTransaction(string date, int amount);
+        void AddDepositTransaction(string date, int amount);
     }
 }

@@ -9,12 +9,15 @@ namespace BankKata.Tests
     {
         private BankAccount account;
         private IBankConsole console;
+        private IBankClock clock;
 
         [SetUp]
         public void Setup()
         {
-            account = new BankAccount(new TransactionsRepo());
             console = A.Fake<IBankConsole>();
+            clock = A.Fake<IBankClock>();
+
+            account = new BankAccount(new TransactionsRepo(), clock);
         }
 
         [Test]
