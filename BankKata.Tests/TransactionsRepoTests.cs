@@ -25,8 +25,8 @@ namespace BankKata.Tests
 
             var transactions = transactionsRepo.AllTransactions();
 
-            Assert.That(transactions[0] == new Transaction(DATE, 100));
             Assert.That(transactions.Count == 1);
+            Assert.That(transactions[0] == new Transaction(DATE, 100));
         }
     }
 }
