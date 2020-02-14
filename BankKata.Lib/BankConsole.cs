@@ -10,7 +10,7 @@ namespace BankKata.Lib
 
         public void PrintLine(string line)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(line);
         }
     }
 }

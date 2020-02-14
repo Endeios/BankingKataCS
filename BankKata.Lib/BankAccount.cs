@@ -1,15 +1,19 @@
-﻿namespace BankKata.Lib
+﻿using System.Collections.Generic;
+
+namespace BankKata.Lib
 {
     public class BankAccount
     {
         private ITransactionsRepo transactionsRepo;
         private IBankClock clock;
+        private ITransactionPrinter transactionPrinters;
 
         public BankAccount(ITransactionsRepo transactionsRepo,
-                           IBankClock clock)
+                           IBankClock clock, ITransactionPrinter transactionPrinter)
         {
             this.transactionsRepo = transactionsRepo;
             this.clock = clock;
+            this.transactionPrinters = transactionPrinter;
         }
 
         public virtual void Deposit(int amount)
@@ -29,7 +33,8 @@
 
         public virtual void PrintStatement()
         {
-
+            IList<Transaction> transactions = transactionsRepo.AllTransactions();
+            transactionPrinters.PrintTransactions(transactions);
         }
     }
 }

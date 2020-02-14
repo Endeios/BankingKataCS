@@ -1,6 +1,7 @@
 ﻿using BankKata.Lib;
 using FakeItEasy;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace BankKata.Tests
 {
@@ -10,13 +11,15 @@ namespace BankKata.Tests
         private BankAccount account;
         private ITransactionsRepo transactionsRepo;
         private IBankClock clock;
+        private ITransactionPrinter printer;
 
         [SetUp]
         public void Setup()
         {
             transactionsRepo = A.Fake<ITransactionsRepo>();
             clock = A.Fake<IBankClock>();
-            account = new BankAccount(transactionsRepo, clock);
+            printer = A.Fake<ITransactionPrinter>();
+            account = new BankAccount(transactionsRepo, clock, printer);
         }
 
         [Test]
@@ -35,6 +38,27 @@ namespace BankKata.Tests
             account.Withdraw(500);
 
             A.CallTo(() => transactionsRepo.AddWithdrawlTransaction(DATE, 500)).MustHaveHappened();
+        }
+
+        [Test]
+        public void should_print_the_transactions()
+        {
+            List<Transaction> transactions = someTransactions();
+
+            A.CallTo(() => transactionsRepo.AllTransactions()).Returns(transactions);
+
+            account.PrintStatement();
+
+            A.CallTo(() => printer.PrintTransactions(transactions)).MustHaveHappened();
+        }
+
+        private static List<Transaction> someTransactions()
+        {
+            List<Transaction> transactions = new List<Transaction>();
+            transactions.Add(new Transaction("10/11/2012", 100));
+            transactions.Add(new Transaction("11/11/2012", 1000));
+            transactions.Add(new Transaction("12/11/2012", -100));
+            return transactions;
         }
     }
 }
