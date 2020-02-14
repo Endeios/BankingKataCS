@@ -27,5 +27,20 @@ namespace BankKata.Tests
 
             A.CallTo(()=>bankConsole.PrintLine("Date || Amount || Balance")).MustHaveHappened();
         }
+
+        [Test]
+        public void should_print_the_transactions_in_inverse_order()
+        {
+            IList<Transaction> transactions = new List<Transaction>();
+            transactions.Add(new Transaction("10 / 04 / 2012",100));
+            transactions.Add(new Transaction("11 / 04 / 2012", 1000));
+            bankPrinter.PrintTransactions(transactions);
+
+            
+
+            A.CallTo(() => bankConsole.PrintLine("Date || Amount || Balance")).MustHaveHappened()
+                .Then(A.CallTo(() => bankConsole.PrintLine("11 / 04 / 2012 || 1000 || 1100")).MustHaveHappened())
+                .Then(A.CallTo(() => bankConsole.PrintLine("10 / 04 / 2012 || 100 || 100")).MustHaveHappened());
+        }
     }
 }
