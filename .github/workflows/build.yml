@@ -21,7 +21,7 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
     - name: Run Tests
-      run: dotnet tests
+      run: dotnet test
     - name: Publish Windows app
       run: dotnet publish BankKata --configuration Release --runtime win-x64 --self-contained false --framework netcoreapp3.1
     - name: Publish Linux app
