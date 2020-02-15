@@ -2,9 +2,6 @@ name: Build Release
 
 on: 
   push:
-    branches:
-      - master
-      - myDev
     tags:
      - v*
 jobs:
@@ -35,6 +32,7 @@ jobs:
     - name: Make zip file with dist
       run: zip -r /home/runner/work/dist.zip /home/runner/work/dist
     - uses: actions/upload-artifact@v1
+    - name: Create Artifact
       with:
-        name: my-artifact
+        name: BankKata.zip
         path: /home/runner/work/dist.zip
