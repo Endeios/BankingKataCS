@@ -19,13 +19,13 @@ namespace BankKata.Tests
 
 
         [Test]
-        public void should_store_deposit_transactions() 
+        public void should_store_deposit_transactions()
         {
             transactionsRepo.AddDepositTransaction(DATE, 100);
 
             var transactions = transactionsRepo.AllTransactions();
 
-            Assert.That(transactions.Count,Is.EqualTo(1));
+            Assert.That(transactions.Count, Is.EqualTo(1));
             Assert.That(transactions[0], Is.EqualTo(new Transaction(DATE, 100)));
         }
 

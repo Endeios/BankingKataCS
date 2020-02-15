@@ -11,10 +11,11 @@ namespace BankKata.Lib
         private const string HEADER = "Date || Amount || Balance";
         private readonly IBankConsole bankConsole;
 
-        public BankPrinter(IBankConsole bankConsole) {
+        public BankPrinter(IBankConsole bankConsole)
+        {
             this.bankConsole = bankConsole;
         }
-        
+
         public void PrintTransactions(IList<Transaction> transactions)
         {
             bankConsole.PrintLine(HEADER);
