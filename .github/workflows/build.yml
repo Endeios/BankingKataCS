@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - myDev
     tags:
      - v*
 jobs:
@@ -19,3 +20,11 @@ jobs:
         dotnet-version: 3.1.100
     - name: Build with dotnet
       run: dotnet build --configuration Release
+    - name: Create the build folder
+      run: mkdir /home/runner/work/dist
+    - name: Copy dll files to dist dir
+      run: cp -v /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/*.dll /home/runner/work/dist
+    - name: Copy exe files to dist dir
+      run: cp -v /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/*.exe /home/runner/work/dist
+    - name: Make zip file with dist
+      run: zip -r /home/runner/work/dist.zip /home/runner/work/dist
