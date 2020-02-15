@@ -34,3 +34,7 @@ jobs:
       run: cp -v /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/win-x64/publish/*.exe /home/runner/work/dist
     - name: Make zip file with dist
       run: zip -r /home/runner/work/dist.zip /home/runner/work/dist
+    - uses: actions/upload-artifact@v1
+      with:
+        name: my-artifact
+        path: /home/runner/work/dist.zip
