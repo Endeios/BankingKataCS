@@ -21,7 +21,7 @@ namespace BankKata.Tests
         }
 
         [Test]
-        [Ignore("I am focusing on the unit tests right now")]
+        //[Ignore("I am focusing on the unit tests right now")]
         public void print_statement_should_have_all_transactions()
         {
             account.Deposit(1500);
