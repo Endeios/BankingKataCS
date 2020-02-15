@@ -23,16 +23,13 @@ jobs:
       run: dotnet publish BankKata --configuration Release --runtime win-x64 --self-contained false --framework netcoreapp3.1
     - name: Publish Linux app
       run: dotnet publish BankKata --configuration Release --runtime linux-x64 --self-contained false --framework netcoreapp3.1
-    - name: Make dist folder
-      run: mkdir /home/runner/work/dist
-    - name: Copy dll files to dist dir
-      run: cp -v /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/win-x64/publish/*.dll /home/runner/work/dist
-    - name: Copy exe files to dist dir
-      run: cp -v /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/win-x64/publish/*.exe /home/runner/work/dist
-    - name: Make zip file with dist
-      run: zip -r /home/runner/work/dist.zip /home/runner/work/dist
-    - name: Create Artifact
+    - name: Create Windows Artifact
       uses: actions/upload-artifact@v1
       with:
-        name: BankKata.zip
-        path: /home/runner/work/dist.zip
+        name: BankKata-win
+        path: /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/win-x64/publish/
+    - name: Create Linux Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: BankKata-linux
+        path: /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/linux-x64/publish/
