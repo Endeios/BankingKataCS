@@ -24,6 +24,9 @@ namespace BankKata.Tests
         //[Ignore("I am focusing on the unit tests right now")]
         public void print_statement_should_have_all_transactions()
         {
+
+            A.CallTo(()=> clock.GetCurrentDateAsString()).ReturnsNextFromSequence("02 / 11 / 2015", "12 / 01 / 2016", "22 / 01 / 2016");
+
             account.Deposit(1500);
             account.Withdraw(500);
             account.Deposit(300);
