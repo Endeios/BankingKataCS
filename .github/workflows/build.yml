@@ -20,13 +20,15 @@ jobs:
         dotnet-version: 3.1.100
     - name: Build with dotnet
       run: dotnet build --configuration Release
-    - name: Create the build folder
-      run: mkdir /home/runner/work/dist
+    - name: Run Tests
+      run: dotnet tests
+    - name: Publish Windows app
+      run: dotnet publish BankKata --configuration Release --runtime win-x64 --self-contained false --framework netcoreapp3.1
+    - name: Publish Linux app
+      run: dotnet publish BankKata --configuration Release --runtime linux-x64 --self-contained false --framework netcoreapp3.1
     - name: Copy dll files to dist dir
-      run: cp -v /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/*.dll /home/runner/work/dist
-    - name: List files because i am not sure what is built on ubuntu image
-      run: ls -la /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/
+      run: cp -v /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/win-x64/publish/*.dll /home/runner/work/dist
     - name: Copy exe files to dist dir
-      run: cp -v /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/*.exe /home/runner/work/dist
+      run: cp -v /home/runner/work/BankingKataCS/BankingKataCS/BankKata/bin/Release/netcoreapp3.1/win-x64/publish/*.exe /home/runner/work/dist
     - name: Make zip file with dist
       run: zip -r /home/runner/work/dist.zip /home/runner/work/dist
