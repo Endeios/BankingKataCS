@@ -1,5 +1,6 @@
 ﻿using System;
 using BankKata.Lib;
+using BankKata.Out.Lib;
 
 namespace BankKata
 {
@@ -9,8 +10,7 @@ namespace BankKata
         {
             ITransactionsRepo transactionsRepo = new TransactionsRepo();
             IBankClock clock = new BankClock();
-            IBankConsole console = new BankConsole();
-            ITransactionPrinter transactionPrinter = new BankPrinter(console);
+            ITransactionPrinter transactionPrinter = new SpectrePrinter();
             var account = new BankAccount(transactionsRepo, clock, transactionPrinter);
 
             account.Deposit(1500);

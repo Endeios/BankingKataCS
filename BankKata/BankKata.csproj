@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BankKata.Lib\BankKata.Lib.csproj" />
+    <ProjectReference Include="..\BankKata.Out.Lib\BankKata.Out.Lib.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
